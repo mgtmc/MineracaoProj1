@@ -65,7 +65,7 @@
             // 
             this.bn_search.BackColor = System.Drawing.Color.White;
             this.bn_search.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.bn_search.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bn_search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bn_search.Location = new System.Drawing.Point(627, 12);
             this.bn_search.Name = "bn_search";
             this.bn_search.Size = new System.Drawing.Size(64, 28);
@@ -87,7 +87,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TelaPrincipal";
-            this.Text = "Buscador";
+            this.Text = "Gago";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
