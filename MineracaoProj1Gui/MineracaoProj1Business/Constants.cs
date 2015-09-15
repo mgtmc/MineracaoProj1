@@ -12,6 +12,6 @@ namespace MineracaoProj1Business
         public const string FILE_NAME= "filename";
         public const string FILE_PATH= "filepath";
         public const string INDEX = "GaGoIndex2";
-        public const int MAX_SEARCH = 10;
+        public const int MAX_SEARCH = 15;
     }
 }

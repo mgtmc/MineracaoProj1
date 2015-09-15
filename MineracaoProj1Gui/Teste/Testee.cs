@@ -12,7 +12,7 @@ namespace Teste
 {
    public class Testee
     {
-        string dataDir = @"C:\Users\Nina\Desktop\Nova pasta\a";
+        string dataDirectory = @"C:\Users\Nina\Desktop\Nova pasta\a";
         Indexer indexer;
         MineracaoProj1Business.Searcher searcher;
 
@@ -20,20 +20,23 @@ namespace Teste
         static void Main(string[] args)
         {
             Testee tester = new Testee();
-            tester.createIndex();
+            tester._IndexAll();
             tester.search("concession");
             Console.WriteLine("");
         }
 
-        private void createIndex()
+        private void _IndexAll()
         {
+            // NumIndexed a quantidade de arquivos indexados
             this.indexer = new Indexer();
             int numIndexed;
-            numIndexed = indexer.CreateIndex(this.dataDir);
+            numIndexed = indexer.IndexFiles(this.dataDirectory);
+            this.indexer.Close();
         }
 
         private void search(String searchQuery)
         {
+            // hits.totalHits a quantidade de arquivos achados
             this.searcher = new MineracaoProj1Business.Searcher();
             TopDocs hits = this.searcher.Search(searchQuery);
 
@@ -42,7 +45,6 @@ namespace Teste
                 Document doc = this.searcher.GetDocument(scoreDoc);
                 Console.WriteLine(doc.Get(Constants.FILE_PATH));
             }
-
         }
 
     }

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Lucene.Net.Documents;
+using Lucene.Net.Search;
+using MineracaoProj1Business;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +15,22 @@ namespace MineracaoProj1Gui
 {
     public partial class TelaPrincipal : Form
     {
+        private MineracaoProj1Business.Searcher _searcher;
+
         public TelaPrincipal()
         {
             InitializeComponent();
+            _IndexAll();
+            this._searcher = new MineracaoProj1Business.Searcher();
+        }
+
+        private void _IndexAll()
+        {
+            // Colocar para a pessoa escolher a pasta
+            Indexer indexer = new Indexer();
+            string dataDirectory = @"C:\Users\Nina\Desktop\Nova pasta\a";
+            indexer.IndexFiles(dataDirectory);
+            indexer.Close();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -24,7 +40,31 @@ namespace MineracaoProj1Gui
 
         private void search_TextChanged(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(this.searchQuery.Text) && !string.IsNullOrWhiteSpace(this.searchQuery.Text))
+                _Search(this.searchQuery.Text);
+        }
 
+        private void bn_search_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(this.searchQuery.Text) && !string.IsNullOrWhiteSpace(this.searchQuery.Text))
+                _Search(this.searchQuery.Text);
+        }
+
+        private void _Search(string query)
+        {
+            this._searcher = new MineracaoProj1Business.Searcher();
+            TopDocs hits = this._searcher.Search(query);
+            List<string> result = new List<string>();
+
+            foreach (ScoreDoc scoreDoc in hits.ScoreDocs)
+            {
+                Document doc = this._searcher.GetDocument(scoreDoc);
+                result.Add(doc.Get(Constants.FILE_NAME));
+                //Console.WriteLine(doc.Get(Constants.FILE_PATH));
+            }
+
+            // Colocar na listView
+            //this.listViewResult = result;
         }
     }
 }

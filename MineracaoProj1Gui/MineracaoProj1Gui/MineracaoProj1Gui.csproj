@@ -91,6 +91,12 @@
     <None Include="Resources\search.png" />
     <Content Include="search.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MineracaoProj1Business\MineracaoProj1Business.csproj">
+      <Project>{367b0ab5-e82f-424e-af32-c3736ff6da08}</Project>
+      <Name>MineracaoProj1Business</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

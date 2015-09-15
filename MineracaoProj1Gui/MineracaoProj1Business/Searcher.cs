@@ -21,10 +21,11 @@ namespace MineracaoProj1Business
 
         public Searcher()
         {
-            Lucene.Net.Store.Directory directory = FSDirectory.Open(new DirectoryInfo(Constants.INDEX));
-            Analyzer analyzer = new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_29);
+            DirectoryInfo directoryInfo = new DirectoryInfo(Constants.INDEX);
+            Lucene.Net.Store.Directory directory = FSDirectory.Open(directoryInfo); 
+            Analyzer analyzer = new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30);
 
-            this.QueryParser = new QueryParser(Lucene.Net.Util.Version.LUCENE_29, Constants.CONTENTS, analyzer);
+            this.QueryParser = new QueryParser(Lucene.Net.Util.Version.LUCENE_30, Constants.CONTENTS, analyzer);
             this.IndexSearcher = new IndexSearcher(directory, true);
         }
 

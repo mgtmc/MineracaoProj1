@@ -18,28 +18,33 @@ namespace MineracaoProj1Business
 
         public Indexer()
         {
+            //elasticsearch -> just in case outro
+            // checar versao do lucene
             DirectoryInfo directoryInfo = new DirectoryInfo(Constants.INDEX);
             Lucene.Net.Store.Directory directory = FSDirectory.Open(directoryInfo);
-            Analyzer analyzer = new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_29);
+            Analyzer analyzer = new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30);
 
             this.writer = new IndexWriter(directory, analyzer, IndexWriter.MaxFieldLength.UNLIMITED);
         }
 
-        public int CreateIndex(string dataPath)
+        public int IndexFiles(string filesPath)
         {
-            string[] files = System.IO.Directory.GetFiles(dataPath);
+            string[] files = System.IO.Directory.GetFiles(filesPath);
 
             foreach (string filePath in files)
-            {
-                FileInfo fs = new FileInfo(filePath);
-                _IdexFile(fs);
-            }
+                _IdexFile(filePath);
 
             return this.writer.NumDocs();
         }
 
-        private void _IdexFile(FileInfo file)
+        public void Close()
         {
+            this.writer.Close();
+        }
+
+        private void _IdexFile(string path)
+        {
+            FileInfo file = new FileInfo(path);
             Document document = new Document();
 
             Field content = new Field(Constants.CONTENTS, new StreamReader(file.FullName));
