@@ -27,6 +27,7 @@ namespace MineracaoProj1Business
 
         public int IndexFiles(string filesPath)
         {
+            this.writer.DeleteAll();
             string[] files = System.IO.Directory.GetFiles(filesPath);
 
             foreach (string filePath in files)

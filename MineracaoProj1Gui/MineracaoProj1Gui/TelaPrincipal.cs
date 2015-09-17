@@ -35,17 +35,21 @@ namespace MineracaoProj1Gui
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            _ClearListView();
         }
 
         private void search_TextChanged(object sender, EventArgs e)
         {
+            _ClearListView();
+
             if (!string.IsNullOrEmpty(this.searchQuery.Text) && !string.IsNullOrWhiteSpace(this.searchQuery.Text))
                 _Search(this.searchQuery.Text);
         }
 
         private void bn_search_Click(object sender, EventArgs e)
         {
+            _ClearListView();
+
             if (!string.IsNullOrEmpty(this.searchQuery.Text) && !string.IsNullOrWhiteSpace(this.searchQuery.Text))
                 _Search(this.searchQuery.Text);
         }
@@ -62,6 +66,12 @@ namespace MineracaoProj1Gui
             }
 
             this._searcher.Close();
+        }
+
+        private void _ClearListView()
+        {
+            this.listViewResult.Clear();
+            this.listViewResult.Columns.Add("Resultados", 775);
         }
     }
 }
