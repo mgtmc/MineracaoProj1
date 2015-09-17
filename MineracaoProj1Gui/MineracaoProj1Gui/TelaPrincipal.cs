@@ -28,7 +28,7 @@ namespace MineracaoProj1Gui
         {
             // Colocar para a pessoa escolher a pasta
             Indexer indexer = new Indexer();
-            string dataDirectory = @"C:\Users\Nina\Desktop\Nova pasta";
+            string dataDirectory = Constants.BASEPATH;
             indexer.IndexFiles(dataDirectory);
             indexer.Close();
         }
