@@ -16,11 +16,11 @@ namespace MineracaoProj1Business
     {
         private IndexWriter writer;
 
-        public Indexer()
+        public Indexer(string type)
         {
             DirectoryInfo directoryInfo = new DirectoryInfo(Constants.INDEX);
             Lucene.Net.Store.Directory directory = FSDirectory.Open(directoryInfo);
-            Analyzer analyzer = new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30);
+            Analyzer analyzer = _AnalyzerFactory(type); 
 
             this.writer = new IndexWriter(directory, analyzer, IndexWriter.MaxFieldLength.UNLIMITED);
         }
@@ -55,6 +55,18 @@ namespace MineracaoProj1Business
             document.Add(filePath);
 
             this.writer.AddDocument(document);
+        }
+
+        private Analyzer _AnalyzerFactory(string type)
+        {
+            if (type.Equals(EProcessType.Normal.GetDescription()))
+                return new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30);
+            else if (type.Equals(EProcessType.WithStopList.GetDescription()))
+                return new StopAnalyzer(Lucene.Net.Util.Version.LUCENE_30);
+            else if (type.Equals(EProcessType.WithStemming.GetDescription()))
+                return null;
+            else
+                return null;
         }
     }
 }

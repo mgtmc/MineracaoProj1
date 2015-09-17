@@ -21,13 +21,17 @@ namespace MineracaoProj1Gui
         {
             InitializeComponent();
             _IndexAll();
-            this._searcher = new MineracaoProj1Business.Searcher();
+            _SearchAll();
+        }
+
+        private void _SearchAll()
+        {
+            this._searcher = new MineracaoProj1Business.Searcher(this.dropdownlist.Text);
         }
 
         private void _IndexAll()
         {
-            // Colocar para a pessoa escolher a pasta
-            Indexer indexer = new Indexer();
+            Indexer indexer = new Indexer(this.dropdownlist.Text);
             string dataDirectory = Constants.BASEPATH;
             indexer.IndexFiles(dataDirectory);
             indexer.Close();

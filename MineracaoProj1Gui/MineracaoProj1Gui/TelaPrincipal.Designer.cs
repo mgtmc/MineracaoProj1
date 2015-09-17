@@ -34,6 +34,7 @@
             this.Result = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.searchQuery = new System.Windows.Forms.TextBox();
             this.bn_search = new System.Windows.Forms.Button();
+            this.dropdownlist = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -65,7 +66,7 @@
             // 
             // searchQuery
             // 
-            this.searchQuery.Location = new System.Drawing.Point(176, 16);
+            this.searchQuery.Location = new System.Drawing.Point(35, 20);
             this.searchQuery.Name = "searchQuery";
             this.searchQuery.Size = new System.Drawing.Size(436, 20);
             this.searchQuery.TabIndex = 2;
@@ -76,7 +77,7 @@
             this.bn_search.BackColor = System.Drawing.Color.White;
             this.bn_search.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.bn_search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bn_search.Location = new System.Drawing.Point(627, 12);
+            this.bn_search.Location = new System.Drawing.Point(637, 15);
             this.bn_search.Name = "bn_search";
             this.bn_search.Size = new System.Drawing.Size(64, 28);
             this.bn_search.TabIndex = 3;
@@ -84,12 +85,25 @@
             this.bn_search.UseVisualStyleBackColor = false;
             this.bn_search.Click += new System.EventHandler(this.bn_search_Click);
             // 
+            // dropdownlist
+            // 
+            this.dropdownlist.FormattingEnabled = true;
+            this.dropdownlist.Items.AddRange(new object[] {
+            "Normal",
+            "Com stoplist",
+            "Com stemming"});
+            this.dropdownlist.Location = new System.Drawing.Point(489, 20);
+            this.dropdownlist.Name = "dropdownlist";
+            this.dropdownlist.Size = new System.Drawing.Size(121, 21);
+            this.dropdownlist.TabIndex = 4;
+            // 
             // TelaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(779, 358);
+            this.Controls.Add(this.dropdownlist);
             this.Controls.Add(this.bn_search);
             this.Controls.Add(this.searchQuery);
             this.Controls.Add(this.listViewResult);
@@ -112,6 +126,7 @@
         private System.Windows.Forms.TextBox searchQuery;
         private System.Windows.Forms.Button bn_search;
         private System.Windows.Forms.ColumnHeader Result;
+        private System.Windows.Forms.ComboBox dropdownlist;
     }
 }
 
