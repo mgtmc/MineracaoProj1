@@ -28,7 +28,7 @@ namespace MineracaoProj1Gui
         {
             // Colocar para a pessoa escolher a pasta
             Indexer indexer = new Indexer();
-            string dataDirectory = @"C:\Users\Nina\Desktop\Nova pasta\a";
+            string dataDirectory = @"C:\Users\Nina\Desktop\Nova pasta";
             indexer.IndexFiles(dataDirectory);
             indexer.Close();
         }
@@ -54,17 +54,14 @@ namespace MineracaoProj1Gui
         {
             this._searcher = new MineracaoProj1Business.Searcher();
             TopDocs hits = this._searcher.Search(query);
-            List<string> result = new List<string>();
 
             foreach (ScoreDoc scoreDoc in hits.ScoreDocs)
             {
                 Document doc = this._searcher.GetDocument(scoreDoc);
-                result.Add(doc.Get(Constants.FILE_NAME));
-                //Console.WriteLine(doc.Get(Constants.FILE_PATH));
+                this.listViewResult.Items.Add(doc.Get(Constants.FILE_NAME));
             }
 
-            // Colocar na listView
-            //this.listViewResult = result;
+            this._searcher.Close();
         }
     }
 }

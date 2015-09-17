@@ -18,8 +18,6 @@ namespace MineracaoProj1Business
 
         public Indexer()
         {
-            //elasticsearch -> just in case outro
-            // checar versao do lucene
             DirectoryInfo directoryInfo = new DirectoryInfo(Constants.INDEX);
             Lucene.Net.Store.Directory directory = FSDirectory.Open(directoryInfo);
             Analyzer analyzer = new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30);
@@ -39,7 +37,7 @@ namespace MineracaoProj1Business
 
         public void Close()
         {
-            this.writer.Close();
+            this.writer.Dispose();
         }
 
         private void _IdexFile(string path)

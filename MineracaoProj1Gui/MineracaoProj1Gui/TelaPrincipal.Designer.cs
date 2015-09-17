@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaPrincipal));
             this.label1 = new System.Windows.Forms.Label();
             this.listViewResult = new System.Windows.Forms.ListView();
+            this.Result = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.searchQuery = new System.Windows.Forms.TextBox();
             this.bn_search = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -45,13 +46,22 @@
             // 
             // listViewResult
             // 
+            this.listViewResult.BackColor = System.Drawing.SystemColors.Window;
             this.listViewResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listViewResult.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Result});
             this.listViewResult.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.listViewResult.Location = new System.Drawing.Point(0, 49);
             this.listViewResult.Name = "listViewResult";
             this.listViewResult.Size = new System.Drawing.Size(779, 309);
             this.listViewResult.TabIndex = 1;
             this.listViewResult.UseCompatibleStateImageBehavior = false;
+            this.listViewResult.View = System.Windows.Forms.View.Details;
+            // 
+            // Result
+            // 
+            this.Result.Text = "";
+            this.Result.Width = 799;
             // 
             // searchQuery
             // 
@@ -101,6 +111,7 @@
         private System.Windows.Forms.ListView listViewResult;
         private System.Windows.Forms.TextBox searchQuery;
         private System.Windows.Forms.Button bn_search;
+        private System.Windows.Forms.ColumnHeader Result;
     }
 }
 

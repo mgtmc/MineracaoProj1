@@ -26,7 +26,7 @@ namespace MineracaoProj1Business
             Analyzer analyzer = new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30);
 
             this.QueryParser = new QueryParser(Lucene.Net.Util.Version.LUCENE_30, Constants.CONTENTS, analyzer);
-            this.IndexSearcher = new IndexSearcher(directory, true);
+            this.IndexSearcher = new IndexSearcher(directory);
         }
 
         public TopDocs Search(string searchQuery)
@@ -39,6 +39,11 @@ namespace MineracaoProj1Business
         public Document GetDocument(ScoreDoc scoreDoc)
         {
             return this.IndexSearcher.Doc(scoreDoc.Doc);
+        }
+
+        public void Close()
+        {
+            this.IndexSearcher.Dispose();
         }
     }
 }
