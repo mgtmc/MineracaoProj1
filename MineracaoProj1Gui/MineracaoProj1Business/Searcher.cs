@@ -49,14 +49,12 @@ namespace MineracaoProj1Business
         private Analyzer _AnalyzerFactory(string type)
         {
             //http://www.tutorialspoint.com/lucene/lucene_stopanalyzer.htm
-            if (type.Equals(EProcessType.Normal.GetDescription()))
-                return new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30);
-            else if (type.Equals(EProcessType.WithStopList.GetDescription()))
+            if (type.Equals(EProcessType.WithStopList.GetDescription()))
                 return new StopAnalyzer(Lucene.Net.Util.Version.LUCENE_30);
             else if (type.Equals(EProcessType.WithStemming.GetDescription()))
                 return null;
             else
-                return null;
+                return new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30);
         }
     }
 }

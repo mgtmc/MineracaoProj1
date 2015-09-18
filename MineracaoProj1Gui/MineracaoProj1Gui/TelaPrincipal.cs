@@ -60,7 +60,7 @@ namespace MineracaoProj1Gui
 
         private void _Search(string query)
         {
-            this._searcher = new MineracaoProj1Business.Searcher();
+            this._searcher = new MineracaoProj1Business.Searcher(EProcessType.WithStopList.GetDescription());
             TopDocs hits = this._searcher.Search(query);
 
             foreach (ScoreDoc scoreDoc in hits.ScoreDocs)
