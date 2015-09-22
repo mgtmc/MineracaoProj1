@@ -11,9 +11,9 @@ namespace MineracaoProj1Business
     {
         [Description("Normal")]
         Normal = 1,
-        [Description("Com stopList")]
+        [Description("Com stoplist")]
         WithStopList = 2,
-        [Description("com stemming")]
+        [Description("Com stemming")]
         WithStemming = 3
     }
 }

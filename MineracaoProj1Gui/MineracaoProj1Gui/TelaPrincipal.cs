@@ -20,6 +20,7 @@ namespace MineracaoProj1Gui
         public TelaPrincipal()
         {
             InitializeComponent();
+            this.dropdownlist.SelectedIndex = 0;
             _IndexAll();
             _SearchAll();
         }
@@ -53,6 +54,8 @@ namespace MineracaoProj1Gui
         private void bn_search_Click(object sender, EventArgs e)
         {
             _ClearListView();
+            _IndexAll();
+            _SearchAll();
 
             if (!string.IsNullOrEmpty(this.searchQuery.Text) && !string.IsNullOrWhiteSpace(this.searchQuery.Text))
                 _Search(this.searchQuery.Text);
