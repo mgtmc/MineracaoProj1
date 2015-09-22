@@ -14,6 +14,8 @@ namespace MineracaoProj1Business
         [Description("Com stoplist")]
         WithStopList = 2,
         [Description("Com stemming")]
-        WithStemming = 3
+        WithStemming = 3,
+        [Description("Stoplist e  stemming")]
+        WithStopListAndStemming = 4
     }
 }

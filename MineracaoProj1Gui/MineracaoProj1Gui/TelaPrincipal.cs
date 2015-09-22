@@ -25,14 +25,28 @@ namespace MineracaoProj1Gui
             _SearchAll();
         }
 
-        private void _SearchAll()
+        private void _SearchAll(bool normal = false)
         {
-            this._searcher = new MineracaoProj1Business.Searcher(this.dropdownlist.Text);
+            string dropdown = string.Empty;
+
+            if (normal)
+                dropdown = EProcessType.Normal.GetDescription();
+            else
+                dropdown = this.dropdownlist.Text;
+
+            this._searcher = new MineracaoProj1Business.Searcher(dropdown);
         }
 
-        private void _IndexAll()
+        private void _IndexAll(bool normal = false)
         {
-            Indexer indexer = new Indexer(this.dropdownlist.Text);
+            string dropdown = string.Empty;
+
+            if (normal)
+                dropdown = EProcessType.Normal.GetDescription();
+            else
+                dropdown = this.dropdownlist.Text;
+
+            Indexer indexer = new Indexer(dropdown);
             string dataDirectory = Constants.BASEPATH;
             indexer.IndexFiles(dataDirectory);
             indexer.Close();
@@ -45,25 +59,23 @@ namespace MineracaoProj1Gui
 
         private void search_TextChanged(object sender, EventArgs e)
         {
-            _ClearListView();
-
-            if (!string.IsNullOrEmpty(this.searchQuery.Text) && !string.IsNullOrWhiteSpace(this.searchQuery.Text))
-                _Search(this.searchQuery.Text);
         }
 
         private void bn_search_Click(object sender, EventArgs e)
         {
             _ClearListView();
-            _IndexAll();
-            _SearchAll();
 
+            if (this.searchQuery.Text.ElementAt(0) == '"' && this.searchQuery.Text.ElementAt(this.searchQuery.Text.Length - 1) == '"')
+            {
+                _IndexAll(true);
+                _SearchAll(true);
+            }
             if (!string.IsNullOrEmpty(this.searchQuery.Text) && !string.IsNullOrWhiteSpace(this.searchQuery.Text))
                 _Search(this.searchQuery.Text);
         }
 
         private void _Search(string query)
         {
-            this._searcher = new MineracaoProj1Business.Searcher(EProcessType.WithStopList.GetDescription());
             TopDocs hits = this._searcher.Search(query);
 
             foreach (ScoreDoc scoreDoc in hits.ScoreDocs)
@@ -79,6 +91,12 @@ namespace MineracaoProj1Gui
         {
             this.listViewResult.Clear();
             this.listViewResult.Columns.Add("Resultados", 775);
+        }
+
+        private void dropdownlist_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _IndexAll();
+            _SearchAll();
         }
     }
 }

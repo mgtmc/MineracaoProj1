@@ -52,9 +52,9 @@
             this.listViewResult.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Result});
             this.listViewResult.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.listViewResult.Location = new System.Drawing.Point(0, 49);
+            this.listViewResult.Location = new System.Drawing.Point(2, 49);
             this.listViewResult.Name = "listViewResult";
-            this.listViewResult.Size = new System.Drawing.Size(779, 309);
+            this.listViewResult.Size = new System.Drawing.Size(710, 309);
             this.listViewResult.TabIndex = 1;
             this.listViewResult.UseCompatibleStateImageBehavior = false;
             this.listViewResult.View = System.Windows.Forms.View.Details;
@@ -66,7 +66,7 @@
             // 
             // searchQuery
             // 
-            this.searchQuery.Location = new System.Drawing.Point(35, 20);
+            this.searchQuery.Location = new System.Drawing.Point(29, 18);
             this.searchQuery.Name = "searchQuery";
             this.searchQuery.Size = new System.Drawing.Size(436, 20);
             this.searchQuery.TabIndex = 2;
@@ -91,18 +91,20 @@
             this.dropdownlist.Items.AddRange(new object[] {
             "Normal",
             "Com stoplist",
-            "Com stemming"});
-            this.dropdownlist.Location = new System.Drawing.Point(489, 20);
+            "Com stemming",
+            "Stoplist e  stemming"});
+            this.dropdownlist.Location = new System.Drawing.Point(483, 18);
             this.dropdownlist.Name = "dropdownlist";
-            this.dropdownlist.Size = new System.Drawing.Size(121, 21);
+            this.dropdownlist.Size = new System.Drawing.Size(142, 21);
             this.dropdownlist.TabIndex = 4;
+            this.dropdownlist.SelectedIndexChanged += new System.EventHandler(this.dropdownlist_SelectedIndexChanged);
             // 
             // TelaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(779, 358);
+            this.ClientSize = new System.Drawing.Size(710, 358);
             this.Controls.Add(this.dropdownlist);
             this.Controls.Add(this.bn_search);
             this.Controls.Add(this.searchQuery);

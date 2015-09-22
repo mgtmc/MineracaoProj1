@@ -20,7 +20,8 @@ namespace MineracaoProj1Business
         {
             DirectoryInfo directoryInfo = new DirectoryInfo(Constants.INDEX);
             Lucene.Net.Store.Directory directory = FSDirectory.Open(directoryInfo);
-            Analyzer analyzer = AnalizerF.Factory(type); 
+            Analyzer analyzer = AnalizerF.Factory(type);
+            //Analyzer analyzer = new StopwordsAnalyzer();
 
             this.writer = new IndexWriter(directory, analyzer, IndexWriter.MaxFieldLength.UNLIMITED);
         }
