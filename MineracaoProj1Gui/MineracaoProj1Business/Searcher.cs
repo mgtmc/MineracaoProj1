@@ -24,6 +24,7 @@ namespace MineracaoProj1Business
             DirectoryInfo directoryInfo = new DirectoryInfo(Constants.INDEX);
             Lucene.Net.Store.Directory directory = FSDirectory.Open(directoryInfo);
             Analyzer analyzer = AnalizerF.Factory(type);
+            //Analyzer analyzer = new StopwordsAnalyzer();
 
             this.QueryParser = new QueryParser(Lucene.Net.Util.Version.LUCENE_30, Constants.CONTENTS, analyzer);
             this.IndexSearcher = new IndexSearcher(directory);
