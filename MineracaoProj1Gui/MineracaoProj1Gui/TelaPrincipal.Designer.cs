@@ -96,6 +96,7 @@
             this.dropdownlist.Name = "dropdownlist";
             this.dropdownlist.Size = new System.Drawing.Size(121, 21);
             this.dropdownlist.TabIndex = 4;
+            this.dropdownlist.SelectedIndexChanged += new System.EventHandler(this.dropdownlist_SelectedIndexChanged);
             // 
             // TelaPrincipal
             // 

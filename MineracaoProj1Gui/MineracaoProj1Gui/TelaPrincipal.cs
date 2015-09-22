@@ -45,17 +45,11 @@ namespace MineracaoProj1Gui
 
         private void search_TextChanged(object sender, EventArgs e)
         {
-            _ClearListView();
-
-            if (!string.IsNullOrEmpty(this.searchQuery.Text) && !string.IsNullOrWhiteSpace(this.searchQuery.Text))
-                _Search(this.searchQuery.Text);
         }
 
         private void bn_search_Click(object sender, EventArgs e)
         {
             _ClearListView();
-            _IndexAll();
-            _SearchAll();
 
             if (!string.IsNullOrEmpty(this.searchQuery.Text) && !string.IsNullOrWhiteSpace(this.searchQuery.Text))
                 _Search(this.searchQuery.Text);
@@ -79,6 +73,12 @@ namespace MineracaoProj1Gui
         {
             this.listViewResult.Clear();
             this.listViewResult.Columns.Add("Resultados", 775);
+        }
+
+        private void dropdownlist_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _IndexAll();
+            _SearchAll();
         }
     }
 }
