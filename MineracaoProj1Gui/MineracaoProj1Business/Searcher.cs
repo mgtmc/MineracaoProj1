@@ -23,7 +23,7 @@ namespace MineracaoProj1Business
         {
             DirectoryInfo directoryInfo = new DirectoryInfo(Constants.INDEX);
             Lucene.Net.Store.Directory directory = FSDirectory.Open(directoryInfo);
-            Analyzer analyzer = _AnalyzerFactory(type);
+            Analyzer analyzer = AnalizerF.Factory(type);
 
             this.QueryParser = new QueryParser(Lucene.Net.Util.Version.LUCENE_30, Constants.CONTENTS, analyzer);
             this.IndexSearcher = new IndexSearcher(directory);
@@ -44,17 +44,6 @@ namespace MineracaoProj1Business
         public void Close()
         {
             this.IndexSearcher.Dispose();
-        }
-
-        private Analyzer _AnalyzerFactory(string type)
-        {
-            //http://www.tutorialspoint.com/lucene/lucene_stopanalyzer.htm
-            if (type.Equals(EProcessType.WithStopList.GetDescription()))
-                return new StopAnalyzer(Lucene.Net.Util.Version.LUCENE_30);
-            else if (type.Equals(EProcessType.WithStemming.GetDescription()))
-                return null;
-            else
-                return new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30);
         }
     }
 }
