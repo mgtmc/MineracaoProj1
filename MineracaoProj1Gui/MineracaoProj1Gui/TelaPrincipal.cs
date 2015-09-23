@@ -15,12 +15,13 @@ namespace MineracaoProj1Gui
 {
     public partial class TelaPrincipal : Form
     {
-        private MineracaoProj1Business.Searcher _searcher;
+        private MineracaoProj1Business.Searcher _searcher { get; set; }
+        private int _DropdownListIndex { get; set; } 
 
         public TelaPrincipal()
         {
             InitializeComponent();
-            this.dropdownlist.SelectedIndex = 0;
+            this.dropdownlist.SelectedIndex = _DropdownListIndex;
             _IndexAll();
             _SearchAll();
         }
@@ -47,18 +48,18 @@ namespace MineracaoProj1Gui
                 dropdown = this.dropdownlist.Text;
 
             Indexer indexer = new Indexer(dropdown);
-            string dataDirectory = Constants.BASEPATH;
-            indexer.IndexFiles(dataDirectory);
+
+            if (System.Environment.MachineName.ToString().Equals("NINAHAACK"))
+                indexer.IndexFiles(Constants.BASEPATHHAACK);
+            else
+                indexer.IndexFiles(Constants.BASEPATH);
+
             indexer.Close();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             _ClearListView();
-        }
-
-        private void search_TextChanged(object sender, EventArgs e)
-        {
         }
 
         private void bn_search_Click(object sender, EventArgs e)
@@ -69,9 +70,20 @@ namespace MineracaoProj1Gui
             {
                 _IndexAll(true);
                 _SearchAll(true);
+                this._DropdownListIndex = Convert.ToInt32(this.dropdownlist.SelectedItem);
             }
+
+            if (this._DropdownListIndex != Convert.ToInt32(this.dropdownlist.SelectedItem))
+            {
+                _IndexAll();
+                _SearchAll();
+            }
+
             if (!string.IsNullOrEmpty(this.searchQuery.Text) && !string.IsNullOrWhiteSpace(this.searchQuery.Text))
+            {
                 _Search(this.searchQuery.Text);
+                this._DropdownListIndex = Convert.ToInt32(this.dropdownlist.SelectedItem);
+            }
         }
 
         private void _Search(string query)
@@ -83,20 +95,21 @@ namespace MineracaoProj1Gui
                 Document doc = this._searcher.GetDocument(scoreDoc);
                 this.listViewResult.Items.Add(doc.Get(Constants.FILE_NAME));
             }
-
-            this._searcher.Close();
         }
 
         private void _ClearListView()
         {
+            this._searcher.Close();
             this.listViewResult.Clear();
             this.listViewResult.Columns.Add("Resultados", 775);
         }
 
         private void dropdownlist_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _IndexAll();
-            _SearchAll();
+        }
+
+        private void search_TextChanged(object sender, EventArgs e)
+        {
         }
     }
 }

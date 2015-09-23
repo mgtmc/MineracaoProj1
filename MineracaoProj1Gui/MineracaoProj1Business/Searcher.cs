@@ -4,6 +4,7 @@ using Lucene.Net.Documents;
 using Lucene.Net.QueryParsers;
 using Lucene.Net.Search;
 using Lucene.Net.Store;
+using MineracaoProj1Business.Analyzers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,8 +24,7 @@ namespace MineracaoProj1Business
         {
             DirectoryInfo directoryInfo = new DirectoryInfo(Constants.INDEX);
             Lucene.Net.Store.Directory directory = FSDirectory.Open(directoryInfo);
-            Analyzer analyzer = AnalizerF.Factory(type);
-            //Analyzer analyzer = new StopwordsAnalyzer();
+            Analyzer analyzer = AnalyzerFactory.Factory(type);
 
             this.QueryParser = new QueryParser(Lucene.Net.Util.Version.LUCENE_30, Constants.CONTENTS, analyzer);
             this.IndexSearcher = new IndexSearcher(directory);

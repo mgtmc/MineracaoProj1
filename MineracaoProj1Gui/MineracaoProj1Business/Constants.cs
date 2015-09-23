@@ -14,5 +14,6 @@ namespace MineracaoProj1Business
         public const string INDEX = "GaGoIndex";
         public const int MAX_SEARCH = 15;
         public const string BASEPATH = @"C:\Users\MariaGabriela\Desktop\Pastosa";
+        public const string BASEPATHHAACK = @"C:\Users\Nina\Desktop\Nova pasta";
     }
 }

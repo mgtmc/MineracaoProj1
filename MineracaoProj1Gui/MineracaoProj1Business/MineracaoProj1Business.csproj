@@ -45,17 +45,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnalizerF.cs" />
-    <Compile Include="DefaultAnalyzer.cs" />
+    <Compile Include="Analyzers\AnalyzerFactory.cs" />
+    <Compile Include="Analyzers\DefaultAnalyzer.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="EProcessType.cs" />
     <Compile Include="Extension.Enum.cs" />
     <Compile Include="Indexer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Searcher.cs" />
-    <Compile Include="StemmingAnalyzer.cs" />
-    <Compile Include="StopAndStemmingAnalyzer.cs" />
-    <Compile Include="StopwordsAnalyzer.cs" />
+    <Compile Include="Analyzers\StemmingAnalyzer.cs" />
+    <Compile Include="Analyzers\StopAndStemmingAnalyzer.cs" />
+    <Compile Include="Analyzers\StopwordsAnalyzer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

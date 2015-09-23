@@ -7,15 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MineracaoProj1Business
+namespace MineracaoProj1Business.Analyzers
 {
-    public class DefaultAnalyzer : Analyzer
+    public class StemmingAnalyzer : DefaultAnalyzer
     {
         public override TokenStream TokenStream(string fieldName, TextReader reader)
         {
-            TokenStream result = new LowerCaseTokenizer(reader);
-            result = new StandardFilter(result);
-            return result;
+            TokenStream result = base.TokenStream(fieldName, reader);
+            return new PorterStemFilter(result); 
         }
     }
 }

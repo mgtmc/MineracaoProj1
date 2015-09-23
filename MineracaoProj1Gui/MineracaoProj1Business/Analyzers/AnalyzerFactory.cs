@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MineracaoProj1Business
+namespace MineracaoProj1Business.Analyzers
 {
-    public static class AnalizerF
+    public static class AnalyzerFactory
     {
         public static Analyzer Factory(string type)
         {
