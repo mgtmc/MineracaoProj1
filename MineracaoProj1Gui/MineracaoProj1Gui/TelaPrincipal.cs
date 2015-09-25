@@ -70,10 +70,10 @@ namespace MineracaoProj1Gui
             {
                 _IndexAll(true);
                 _SearchAll(true);
-                this._DropdownListIndex = Convert.ToInt32(this.dropdownlist.SelectedItem);
+                this._DropdownListIndex = Convert.ToInt32(this.dropdownlist.SelectedIndex);
             }
 
-            if (this._DropdownListIndex != Convert.ToInt32(this.dropdownlist.SelectedItem))
+            if (this._DropdownListIndex != Convert.ToInt32(this.dropdownlist.SelectedIndex))
             {
                 _IndexAll();
                 _SearchAll();
@@ -82,7 +82,7 @@ namespace MineracaoProj1Gui
             if (!string.IsNullOrEmpty(this.searchQuery.Text) && !string.IsNullOrWhiteSpace(this.searchQuery.Text))
             {
                 _Search(this.searchQuery.Text);
-                this._DropdownListIndex = Convert.ToInt32(this.dropdownlist.SelectedItem);
+                this._DropdownListIndex = Convert.ToInt32(this.dropdownlist.SelectedIndex);
             }
         }
 
@@ -99,7 +99,6 @@ namespace MineracaoProj1Gui
 
         private void _ClearListView()
         {
-            this._searcher.Close();
             this.listViewResult.Clear();
             this.listViewResult.Columns.Add("Resultados", 775);
         }

@@ -32,7 +32,14 @@ namespace MineracaoProj1Business
 
         public TopDocs Search(string searchQuery)
         {
-            this.Query = QueryParser.Parse(searchQuery);
+            try
+            {
+                this.Query = QueryParser.Parse(searchQuery);
+            }
+            catch (Exception e)
+            {
+                this.Query = QueryParser.Parse(QueryParser.Escape(searchQuery));
+            }
 
             return this.IndexSearcher.Search(this.Query, Constants.MAX_SEARCH);
         }

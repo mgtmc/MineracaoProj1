@@ -54,7 +54,7 @@
             this.listViewResult.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.listViewResult.Location = new System.Drawing.Point(2, 49);
             this.listViewResult.Name = "listViewResult";
-            this.listViewResult.Size = new System.Drawing.Size(710, 309);
+            this.listViewResult.Size = new System.Drawing.Size(801, 309);
             this.listViewResult.TabIndex = 1;
             this.listViewResult.UseCompatibleStateImageBehavior = false;
             this.listViewResult.View = System.Windows.Forms.View.Details;
