@@ -35,6 +35,7 @@
             this.searchQuery = new System.Windows.Forms.TextBox();
             this.bn_search = new System.Windows.Forms.Button();
             this.dropdownlist = new System.Windows.Forms.ComboBox();
+            this.labelResults = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -99,12 +100,22 @@
             this.dropdownlist.TabIndex = 4;
             this.dropdownlist.SelectedIndexChanged += new System.EventHandler(this.dropdownlist_SelectedIndexChanged);
             // 
+            // labelResults
+            // 
+            this.labelResults.AutoSize = true;
+            this.labelResults.Location = new System.Drawing.Point(486, 49);
+            this.labelResults.Name = "labelResults";
+            this.labelResults.Size = new System.Drawing.Size(62, 13);
+            this.labelResults.TabIndex = 6;
+            this.labelResults.Text = "Retornados";
+            // 
             // TelaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(710, 358);
+            this.Controls.Add(this.labelResults);
             this.Controls.Add(this.dropdownlist);
             this.Controls.Add(this.bn_search);
             this.Controls.Add(this.searchQuery);
@@ -129,6 +140,7 @@
         private System.Windows.Forms.Button bn_search;
         private System.Windows.Forms.ColumnHeader Result;
         private System.Windows.Forms.ComboBox dropdownlist;
+        private System.Windows.Forms.Label labelResults;
     }
 }
 

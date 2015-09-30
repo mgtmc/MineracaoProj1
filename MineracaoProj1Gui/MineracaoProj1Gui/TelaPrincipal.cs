@@ -59,7 +59,7 @@ namespace MineracaoProj1Gui
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            _ClearListView();
+            _ClearListView();   
         }
 
         private void bn_search_Click(object sender, EventArgs e)
@@ -95,6 +95,8 @@ namespace MineracaoProj1Gui
                 Document doc = this._searcher.GetDocument(scoreDoc);
                 this.listViewResult.Items.Add(doc.Get(Constants.FILE_NAME));
             }
+
+            this.labelResults.Text = this.listViewResult.Items.Count.ToString();
         }
 
         private void _ClearListView()
