@@ -96,7 +96,7 @@ namespace MineracaoProj1Gui
                 this.listViewResult.Items.Add(doc.Get(Constants.FILE_NAME));
             }
 
-            this.labelResults.Text = this.listViewResult.Items.Count.ToString();
+            this.labelResults.Text = hits.ScoreDocs.Length.ToString();
         }
 
         private void _ClearListView()
