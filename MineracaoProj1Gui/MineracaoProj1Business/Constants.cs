@@ -12,7 +12,7 @@ namespace MineracaoProj1Business
         public const string FILE_NAME= "filename";
         public const string FILE_PATH= "filepath";
         public const string INDEX = "GaGoIndex";
-        public const int MAX_SEARCH = int.MaxValue;
+        public const int MAX_SEARCH = 100;
         public const string BASEPATH = @"C:\Users\MariaGabriela\Desktop\Pastosa";
         public const string BASEPATHHAACK = @"C:\Users\Nina\Desktop\Nova pasta";
     }
