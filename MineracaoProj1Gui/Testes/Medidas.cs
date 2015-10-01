@@ -19,40 +19,40 @@ namespace MineracaoProj1Business
         public Medidas(TopDocs hits, Searcher searcher, List<int> docs)
         {
             this.qtdDocsRelevantesRetornados = DocsRelevantesRecuperados(hits, searcher, docs);
-            this.precisao = Precisao(hits.ScoreDocs.Length);
-            this.cobetura = Cobertura(docs.Count);
-            this.fmeasure = FMeasure();
+            this.precisao = _Precisao(hits.ScoreDocs.Length);
+            this.cobetura = _Cobertura(docs.Count);
+            this.fmeasure = _FMeasure();
         }
+
         private int DocsRelevantesRecuperados(TopDocs hits, Searcher searcher, List<int> docs)
         {
             int qtd = 0;
+
             foreach (ScoreDoc scoreDoc in hits.ScoreDocs)
             {
                 Document doc = searcher.GetDocument(scoreDoc);
                 string docId = doc.Get(Constants.FILE_NAME);
                 string number = docId.Substring(docId.IndexOf('(')+1, docId.IndexOf(')') - docId.IndexOf('(') - 1);
                 int num = Int32.Parse(number);
+                
                 if (docs.Contains(num))
-                {
                     qtd++;
-                }
-
             }
 
             return qtd;
         }
 
-        private double Precisao(int docsRec)
+        private double _Precisao(int docsRec)
         {
             return (double) qtdDocsRelevantesRetornados / docsRec;
         }
 
-        private double Cobertura(int docsRel)
+        private double _Cobertura(int docsRel)
         {
             return (double) qtdDocsRelevantesRetornados / docsRel;
         }
 
-        private double FMeasure()
+        private double _FMeasure()
         {
             double numerador = 2 * precisao * cobetura;
             double denominador = precisao + cobetura;
